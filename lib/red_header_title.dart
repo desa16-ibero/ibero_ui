@@ -3,8 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'utils/utils_ui.dart';
 
-
-
 class RedHeaderTitle extends StatelessWidget {
   final String title;
   final String? subtitle;
@@ -69,7 +67,7 @@ class RedHeaderTitle extends StatelessWidget {
                       top: 5, bottom: 5, left: 10, right: 10),
                   height: 48,
                   child: ElevatedButton(
-                    style: UtilsUI.raisedButtonStyle2,
+                    style: UtilsUI.raisedWhiteButtonStyle,
                     onPressed: onPressed,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
