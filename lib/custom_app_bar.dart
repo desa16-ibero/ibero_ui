@@ -4,12 +4,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'utils/utils_ui.dart';
 
-class CustomAppBar2 extends StatelessWidget implements PreferredSizeWidget {
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool canBack;
   final bool? isOpenDrawer;
   final VoidCallback? onBackPressed;
 
-  const CustomAppBar2(
+  const CustomAppBar(
       {super.key,
       required this.canBack,
       this.isOpenDrawer,
