@@ -21,7 +21,7 @@ class RedHeaderTitle extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.fromLTRB(12, 12, 19, 12),
       margin: const EdgeInsets.only(top: 24, bottom: 24),
-      color: UtilsUI.redDarkCustomColor,
+      color: UtilsUI.primaryColor[700],
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -83,7 +83,7 @@ class RedHeaderTitle extends StatelessWidget {
                         ),
                         const SizedBox(width: 10),
                         SvgPicture.asset(
-                          'assets/new_images/download_ico.svg',
+                          'assets/svg/arrow_down_edge_down_ico.svg',
                           width: 10,
                           height: 17.5,
                         ),

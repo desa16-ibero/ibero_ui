@@ -52,7 +52,7 @@ class HeaderListTile extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                     fontSize: 18,
                     height: 1.3,
-                    color: UtilsUI.blackCustomColor,
+                    color: UtilsUI.neutralColor[900],
                   ),
                 ),
                 Text(
@@ -63,7 +63,7 @@ class HeaderListTile extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                     fontSize: 12,
                     height: 1.3,
-                    color: UtilsUI.blackCustomColor,
+                    color: UtilsUI.neutralColor[900],
                   ),
                 ),
               ],
@@ -74,7 +74,7 @@ class HeaderListTile extends StatelessWidget {
           flex: 2,
           fit: FlexFit.tight,
           child: SvgPicture.asset(
-            'assets/new_images/info_ico.svg',
+            'assets/svg/info_circle_ico.svg',
             height: 24,
             width: 24,
             alignment: Alignment.topRight,

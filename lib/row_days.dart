@@ -47,7 +47,7 @@ class RowDays extends StatelessWidget {
       fit: FlexFit.tight,
       flex: 5,
       child: Container(
-        color: UtilsUI.redDarkCustomColor,
+        color: UtilsUI.primaryColor[700],
         padding: const EdgeInsets.fromLTRB(0, 13, 0, 13),
         child: Text(
           day,
@@ -75,22 +75,22 @@ class RowDays extends StatelessWidget {
           decoration: BoxDecoration(
             border: isFirst
                 ? Border.all(
-                    color: const Color(0xFFA2A2A2),
+                    color: UtilsUI.neutralColor[300]!,
                   )
-                : const Border(
-                    bottom: BorderSide(color: Color(0xFFA2A2A2)),
-                    left: BorderSide(color: Color(0xFFA2A2A2)),
-                    top: BorderSide(color: Color(0xFFA2A2A2)),
+                : Border(
+                    bottom: BorderSide(color: UtilsUI.neutralColor[300]!),
+                    left: BorderSide(color: UtilsUI.neutralColor[300]!),
+                    top: BorderSide(color: UtilsUI.neutralColor[300]!),
                   ),
           ),
           child: Text(
             day,
-            style: const TextStyle(
+            style: TextStyle(
               fontWeight: FontWeight.w400,
               fontSize: 16,
               height: 1.4,
               letterSpacing: -0.2,
-              color: Color(0xFF3C3B3B),
+              color: UtilsUI.neutralColor[700],
             ),
           ),
         ),

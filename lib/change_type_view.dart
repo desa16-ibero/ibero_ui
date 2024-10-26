@@ -37,7 +37,7 @@ class ChangeTypeView extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: const Color(0xFFD8D8D8),
+                  color: UtilsUI.neutralColor[100]!,
                 ),
                 borderRadius: BorderRadius.circular(50),
                 color: Colors.white,
@@ -49,16 +49,20 @@ class ChangeTypeView extends StatelessWidget {
                     child: Container(
                       decoration: BoxDecoration(
                         color: isGridView
-                            ? UtilsUI.redDarkCustomColor
+                            ? UtilsUI.primaryColor[700]
                             : Colors.white,
                         borderRadius: BorderRadius.circular(40),
                       ),
                       width: 45,
                       height: 45,
                       padding: const EdgeInsets.all(11.7),
-                      child: SvgPicture.asset(isGridView
-                          ? 'assets/new_images/grid_white_ico.svg'
-                          : 'assets/new_images/grid_black_ico.svg'),
+                      child: SvgPicture.asset(
+                        'assets/svg/dashboard_4_ico.svg',
+                        colorFilter: ColorFilter.mode(
+                          isGridView ? Colors.white : Colors.black,
+                          BlendMode.srcIn,
+                        ),
+                      ),
                     ),
                   ),
                   GestureDetector(
@@ -67,15 +71,21 @@ class ChangeTypeView extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: isGridView
                             ? Colors.white
-                            : UtilsUI.redDarkCustomColor,
+                            : UtilsUI.primaryColor[700],
                         borderRadius: BorderRadius.circular(40),
                       ),
                       width: 45,
                       height: 45,
                       padding: const EdgeInsets.all(11.7),
-                      child: SvgPicture.asset(isGridView
-                          ? 'assets/new_images/list_black_ico.svg'
-                          : 'assets/new_images/list_white_ico.svg'),
+                      child: SvgPicture.asset(
+                        'assets/svg/text_vignette.svg',
+                        width: 45,
+                        height: 45,
+                        colorFilter: ColorFilter.mode(
+                          isGridView ? Colors.black : Colors.white,
+                          BlendMode.srcIn,
+                        ),
+                      ),
                     ),
                   ),
                 ],

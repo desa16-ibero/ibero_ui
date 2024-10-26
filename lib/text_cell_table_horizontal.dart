@@ -19,7 +19,7 @@ class TextCellTableHorizontal extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(10),
-      color: isHeader ? const Color(0xFFF3F3F3) : null,
+      color: isHeader ? UtilsUI.neutralColor[50] : null,
       child: Text(
         text,
         textAlign: alignText ? TextAlign.center : null,
@@ -29,7 +29,7 @@ class TextCellTableHorizontal extends StatelessWidget {
           height: 1.6,
           letterSpacing: -0.2,
           color:
-              isHeader ? const Color(0xFF575757) : UtilsUI.iconGrayCustomColor,
+              isHeader ? UtilsUI.neutralColor[600] : UtilsUI.neutralColor[900],
         ),
       ),
     );

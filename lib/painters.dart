@@ -14,7 +14,7 @@ class DashedLineVertical extends CustomPainter {
     double startY = 0;
 
     final paint = Paint()
-      ..color = UtilsUI.iconGrayCustomColor
+      ..color = UtilsUI.neutralColor[900]!
       ..strokeWidth = stroke ?? 3;
 
     while (startY < size.height) {
@@ -33,7 +33,7 @@ class TrianglePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = UtilsUI.iconGrayCustomColor
+      ..color = UtilsUI.neutralColor[900]!
       ..strokeWidth = 1;
 
     final path = Path();

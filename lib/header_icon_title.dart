@@ -17,16 +17,13 @@ class HeaderIconTitle extends StatelessWidget {
         children: [
           Container(
             decoration: BoxDecoration(
-              color: const Color(0xFFF3F3F3),
+              color: UtilsUI.neutralColor[50],
               borderRadius: BorderRadius.circular(40),
             ),
             width: 50,
             height: 50,
             padding: const EdgeInsets.all(11.7),
-            child: SvgPicture.asset(
-              path,
-              semanticsLabel: 'ico',
-            ),
+            child: SvgPicture.asset(path),
           ),
           const SizedBox(width: 22),
           Text(
@@ -35,7 +32,7 @@ class HeaderIconTitle extends StatelessWidget {
               fontWeight: FontWeight.w400,
               fontSize: 24,
               height: 1.3,
-              color: UtilsUI.iconGrayCustomColor,
+              color: UtilsUI.neutralColor[900],
             ),
           ),
         ],

@@ -37,7 +37,7 @@ class CustomTextFormField extends StatelessWidget {
       style: TextStyle(
         fontSize: 16,
         height: 1.4,
-        color: UtilsUI.grayCustomColor,
+        color: UtilsUI.neutralColor[500],
       ),
       obscureText: obscureText != null ? obscureText as bool : false,
       decoration: InputDecoration(
@@ -48,7 +48,7 @@ class CustomTextFormField extends StatelessWidget {
             ? IconButton(
                 icon: Icon(
                   obscureText! ? Icons.visibility_off : Icons.visibility,
-                  color: UtilsUI.grayCustomColor,
+                  color: UtilsUI.neutralColor[500],
                 ),
                 onPressed: changeObscureText,
               )

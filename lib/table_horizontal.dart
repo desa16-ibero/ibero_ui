@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'utils/utils_ui.dart';
+
 class TableHorizontal extends StatefulWidget {
   final List<TableRow> rowCell;
   final Map<int, TableColumnWidth> columnWidths;
@@ -21,7 +23,7 @@ class _TableHorizontalState extends State<TableHorizontal> {
       child: RawScrollbar(
         controller: scrollController,
         interactive: true,
-        thumbColor: const Color(0xFFD8D8D8),
+        thumbColor: UtilsUI.neutralColor[100],
         thickness: 8,
         thumbVisibility: true,
         crossAxisMargin: -20,

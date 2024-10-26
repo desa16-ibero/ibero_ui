@@ -19,7 +19,7 @@ class HeaderRowOptions extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         border: Border.all(
-          color: const Color(0xFFF3F3F3),
+          color: UtilsUI.neutralColor[50]!,
         ),
         borderRadius: BorderRadius.circular(50),
         color: Colors.white,
@@ -62,8 +62,8 @@ class HeaderRowOptions extends StatelessWidget {
                       letterSpacing: -0.2,
                       color: mapData.entries.toList()[index].key ==
                               currentSelection
-                          ? UtilsUI.redCustomColor
-                          : const Color(0xFF3C3B3B),
+                          ? UtilsUI.primaryColor[500]
+                          : UtilsUI.neutralColor[700],
                     ),
                   ),
                 ),
