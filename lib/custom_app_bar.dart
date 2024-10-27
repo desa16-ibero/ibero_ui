@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import 'utils/strings_svg.dart';
 import 'utils/utils_ui.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -30,7 +31,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
               ),
               child: SvgPicture.asset(
-                'assets/svg/logo.svg',
+                StringsSVG.logo,
                 width: 90,
                 height: 34.6,
                 package: 'ibero_ui',
@@ -41,7 +42,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               children: [
                 IconButton(
                     icon: SvgPicture.asset(
-                      'assets/svg/menu.svg',
+                      StringsSVG.menu,
                       package: 'ibero_ui',
                     ),
                     onPressed: () => Navigator.of(context).pop()),

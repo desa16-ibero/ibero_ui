@@ -27,6 +27,5 @@ flutter:
 
   assets:
     - assets/svg/
-    - assets/svg/logo.svg
 
 
