@@ -1,6 +1,6 @@
 name: ibero_ui
 description: "Librería para implementar estilos de interfaz de la Ibero."
-version: 0.0.1
+version: 0.0.2
 homepage:
 
 environment:
@@ -16,7 +16,6 @@ dependencies:
   flutter_svg: ^2.0.10+1
   form_validation: ^3.1.1+8
   permission_handler: ^11.3.1
-  font_awesome_flutter: ^10.7.0
 
 dev_dependencies:
   flutter_test:

@@ -78,7 +78,7 @@ class ChangeTypeView extends StatelessWidget {
                       height: 45,
                       padding: const EdgeInsets.all(11.7),
                       child: SvgPicture.asset(
-                        'assets/svg/text_vignette.svg',
+                        'assets/svg/text_vignette_ico.svg',
                         width: 45,
                         height: 45,
                         colorFilter: ColorFilter.mode(
