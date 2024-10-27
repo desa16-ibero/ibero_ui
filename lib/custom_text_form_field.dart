@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:form_validation/form_validation.dart';
 
+import 'utils/strings_svg.dart';
+import 'utils/texts_ui.dart';
 import 'utils/utils_ui.dart';
 
 class CustomTextFormField extends StatelessWidget {
@@ -34,11 +37,7 @@ class CustomTextFormField extends StatelessWidget {
       controller: controller,
       onEditingComplete: () => FocusScope.of(context).nextFocus(),
       keyboardType: textInputType,
-      style: TextStyle(
-        fontSize: 16,
-        height: 1.4,
-        color: UtilsUI.neutralColor[500],
-      ),
+      style: TextsUI.body2,
       obscureText: obscureText != null ? obscureText as bool : false,
       decoration: InputDecoration(
         floatingLabelAlignment: FloatingLabelAlignment.start,
@@ -46,9 +45,13 @@ class CustomTextFormField extends StatelessWidget {
         hintText: hint,
         suffixIcon: changeObscureText != null
             ? IconButton(
-                icon: Icon(
-                  obscureText! ? Icons.visibility_off : Icons.visibility,
-                  color: UtilsUI.neutralColor[500],
+                icon: SvgPicture.asset(
+                  obscureText! ? StringsSVG.eyeLock : StringsSVG.eye,
+                  package: 'ibero_ui',
+                  colorFilter: ColorFilter.mode(
+                    UtilsUI.neutralColor[900]!,
+                    BlendMode.srcIn,
+                  ),
                 ),
                 onPressed: changeObscureText,
               )

@@ -80,7 +80,7 @@ class UtilsUI {
 
   static ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
     foregroundColor: Colors.white,
-    backgroundColor: neutralColor[900],
+    backgroundColor: primaryColor[700],
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.all(Radius.circular(48)),
     ),
