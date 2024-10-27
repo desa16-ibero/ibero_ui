@@ -33,6 +33,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 'assets/svg/logo.svg',
                 width: 90,
                 height: 34.6,
+                package: 'ibero_ui',
               ),
             ),
             const Spacer(),
@@ -41,6 +42,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 IconButton(
                     icon: SvgPicture.asset(
                       'assets/svg/menu.svg',
+                      package: 'ibero_ui',
                     ),
                     onPressed: () => Navigator.of(context).pop()),
                 const SizedBox(width: 20),
