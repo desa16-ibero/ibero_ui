@@ -78,6 +78,7 @@ class HeaderListTile extends StatelessWidget {
             height: 24,
             width: 24,
             alignment: Alignment.topRight,
+            package: 'ibero_ui',
           ),
         ),
       ],

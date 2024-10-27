@@ -22,6 +22,7 @@ class CustomBackButton extends StatelessWidget {
                 UtilsUI.neutralColor[900]!,
                 BlendMode.srcIn,
               ),
+              package: 'ibero_ui',
             ),
             SizedBox(width: 16),
             Text(

@@ -4,9 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'utils/utils_ui.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final bool? isOpenDrawer;
-
-  const CustomAppBar({super.key, this.isOpenDrawer});
+  const CustomAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,38 +15,22 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(color: UtilsUI.neutralColor[900]),
         automaticallyImplyLeading: false,
-        title: Row(
-          children: [
-            Container(
-              padding: const EdgeInsets.only(
-                  left: 28, right: 28, top: 15, bottom: 15),
-              decoration: BoxDecoration(
-                color: UtilsUI.primaryColor[500],
-                borderRadius: const BorderRadius.only(
-                  topRight: Radius.circular(50),
-                  bottomRight: Radius.circular(50),
-                ),
-              ),
-              child: SvgPicture.asset(
-                'assets/svg/logo.svg',
-                width: 90,
-                height: 34.6,
-                package: 'ibero_ui',
-              ),
+        title: Container(
+          padding:
+              const EdgeInsets.only(left: 28, right: 28, top: 15, bottom: 15),
+          decoration: BoxDecoration(
+            color: UtilsUI.primaryColor[500],
+            borderRadius: const BorderRadius.only(
+              topRight: Radius.circular(50),
+              bottomRight: Radius.circular(50),
             ),
-            const Spacer(),
-            Row(
-              children: [
-                IconButton(
-                    icon: SvgPicture.asset(
-                      'assets/svg/menu.svg',
-                      package: 'ibero_ui',
-                    ),
-                    onPressed: () => Navigator.of(context).pop()),
-                const SizedBox(width: 20),
-              ],
-            ),
-          ],
+          ),
+          child: SvgPicture.asset(
+            'assets/svg/logo.svg',
+            width: 90,
+            height: 34.6,
+            package: 'ibero_ui',
+          ),
         ),
         titleSpacing: 0,
       ),

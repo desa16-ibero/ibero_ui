@@ -86,6 +86,7 @@ class RedHeaderTitle extends StatelessWidget {
                           'assets/svg/arrow_down_edge_down_ico.svg',
                           width: 10,
                           height: 17.5,
+                          package: 'ibero_ui',
                         ),
                       ],
                     ),

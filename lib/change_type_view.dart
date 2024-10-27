@@ -58,6 +58,7 @@ class ChangeTypeView extends StatelessWidget {
                       padding: const EdgeInsets.all(11.7),
                       child: SvgPicture.asset(
                         'assets/svg/dashboard_4_ico.svg',
+                        package: 'ibero_ui',
                         colorFilter: ColorFilter.mode(
                           isGridView ? Colors.white : Colors.black,
                           BlendMode.srcIn,
@@ -79,6 +80,7 @@ class ChangeTypeView extends StatelessWidget {
                       padding: const EdgeInsets.all(11.7),
                       child: SvgPicture.asset(
                         'assets/svg/text_vignette_ico.svg',
+                        package: 'ibero_ui',
                         width: 45,
                         height: 45,
                         colorFilter: ColorFilter.mode(
