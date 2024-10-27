@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import 'utils/strings_svg.dart';
 import 'utils/utils_ui.dart';
 
 class RedHeaderTitle extends StatelessWidget {
@@ -83,7 +84,7 @@ class RedHeaderTitle extends StatelessWidget {
                         ),
                         const SizedBox(width: 10),
                         SvgPicture.asset(
-                          'assets/svg/arrow_down_edge_down_ico.svg',
+                          StringsSVG.arrowDownEdgeDown,
                           width: 10,
                           height: 17.5,
                           package: 'ibero_ui',

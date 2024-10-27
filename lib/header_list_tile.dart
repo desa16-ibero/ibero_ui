@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import 'utils/strings_svg.dart';
 import 'utils/utils_ui.dart';
 
 class HeaderListTile extends StatelessWidget {
@@ -74,7 +75,7 @@ class HeaderListTile extends StatelessWidget {
           flex: 2,
           fit: FlexFit.tight,
           child: SvgPicture.asset(
-            'assets/svg/info_circle_ico.svg',
+            StringsSVG.infoCircle,
             height: 24,
             width: 24,
             alignment: Alignment.topRight,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import 'utils/strings_svg.dart';
 import 'utils/utils_ui.dart';
 
 class CustomBackButton extends StatelessWidget {
@@ -17,7 +18,7 @@ class CustomBackButton extends StatelessWidget {
         child: Row(
           children: [
             SvgPicture.asset(
-              'assets/svg/arrow_left_ico.svg',
+              StringsSVG.arrowLeft,
               colorFilter: ColorFilter.mode(
                 UtilsUI.neutralColor[900]!,
                 BlendMode.srcIn,

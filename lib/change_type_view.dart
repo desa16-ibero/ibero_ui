@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import 'utils/strings_svg.dart';
 import 'utils/utils_ui.dart';
 
 class ChangeTypeView extends StatelessWidget {
@@ -57,7 +58,7 @@ class ChangeTypeView extends StatelessWidget {
                       height: 45,
                       padding: const EdgeInsets.all(11.7),
                       child: SvgPicture.asset(
-                        'assets/svg/dashboard_4_ico.svg',
+                        StringsSVG.dashboard4,
                         package: 'ibero_ui',
                         colorFilter: ColorFilter.mode(
                           isGridView ? Colors.white : Colors.black,
@@ -79,7 +80,7 @@ class ChangeTypeView extends StatelessWidget {
                       height: 45,
                       padding: const EdgeInsets.all(11.7),
                       child: SvgPicture.asset(
-                        'assets/svg/text_vignette_ico.svg',
+                        StringsSVG.textVignette,
                         package: 'ibero_ui',
                         width: 45,
                         height: 45,
