@@ -20,10 +20,19 @@ class HeaderIconTitle extends StatelessWidget {
               color: UtilsUI.neutralColor[50],
               borderRadius: BorderRadius.circular(40),
             ),
-            width: 50,
-            height: 50,
+            width: 48,
+            height: 48,
             padding: const EdgeInsets.all(11.7),
-            child: SvgPicture.asset(path),
+            child: SvgPicture.asset(
+              path,
+              package: 'ibero_ui',
+              width: 36,
+              height: 36,
+              colorFilter: ColorFilter.mode(
+                UtilsUI.neutralColor[700]!,
+                BlendMode.srcIn,
+              ),
+            ),
           ),
           const SizedBox(width: 22),
           Text(
@@ -31,7 +40,7 @@ class HeaderIconTitle extends StatelessWidget {
             style: TextStyle(
               fontWeight: FontWeight.w400,
               fontSize: 24,
-              height: 1.3,
+              letterSpacing: -1,
               color: UtilsUI.neutralColor[900],
             ),
           ),

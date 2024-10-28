@@ -34,7 +34,14 @@ class HeaderListTile extends StatelessWidget {
             width: 36,
             height: 36,
             padding: const EdgeInsets.fromLTRB(6.9, 6.4, 6.5, 7.1),
-            child: SvgPicture.asset(pathIco),
+            child: SvgPicture.asset(
+              pathIco,
+              package: 'ibero_ui',
+              colorFilter:
+                  ColorFilter.mode(UtilsUI.neutralColor[900]!, BlendMode.srcIn),
+              height: 23,
+              width: 23,
+            ),
           ),
         ),
         Flexible(
