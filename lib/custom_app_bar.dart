@@ -4,24 +4,22 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'utils/strings_svg.dart';
 import 'utils/utils_ui.dart';
 
-class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+class CustomAppBar extends StatelessWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;
 
   const CustomAppBar({super.key, required this.scaffoldKey});
 
   @override
   Widget build(BuildContext context) {
-    return PreferredSize(
-      preferredSize: const Size.fromHeight(kToolbarHeight),
-      child: AppBar(
-        elevation: 0.5,
-        shape: Border(
-          bottom: BorderSide(color: UtilsUI.neutralColor[300]!, width: 0.5),
+    return SafeArea(
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border(
+            bottom: BorderSide(width: 0.5, color: UtilsUI.neutralColor[300]!),
+          ),
+          color: Colors.white,
         ),
-        backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: UtilsUI.neutralColor[900]),
-        automaticallyImplyLeading: false,
-        title: Row(
+        child: Row(
           children: [
             Container(
               padding: const EdgeInsets.only(
@@ -36,31 +34,23 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               child: SvgPicture.asset(
                 StringsSVG.logo,
                 width: 90,
-                height: 34.6,
+                height: 35,
                 package: 'ibero_ui',
               ),
             ),
             const Spacer(),
-            !scaffoldKey.currentState!.isDrawerOpen
-                ? IconButton(
-                    icon: SvgPicture.asset(
-                      StringsSVG.cancel1,
-                      package: 'ibero_ui',
-                    ),
-                    onPressed: () => scaffoldKey.currentState!.openDrawer())
-                : IconButton(
-                    icon: SvgPicture.asset(
-                      StringsSVG.menu,
-                      package: 'ibero_ui',
-                    ),
-                    onPressed: () => scaffoldKey.currentState!.closeDrawer()),
+            IconButton(
+              icon: SvgPicture.asset(
+                StringsSVG.menu,
+                package: 'ibero_ui',
+                colorFilter: ColorFilter.mode(
+                    UtilsUI.neutralColor[900]!, BlendMode.srcIn),
+              ),
+              onPressed: () => scaffoldKey.currentState?.openEndDrawer(),
+            ),
           ],
         ),
-        titleSpacing: 0,
       ),
     );
   }
-
-  @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
