@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import 'utils/strings_svg.dart';
-import 'utils/texts_ui.dart';
-import 'utils/utils_ui.dart';
+import 'package:ibero_ui/utils/strings_svg.dart';
+import 'package:ibero_ui/utils/texts_ui.dart';
+import 'package:ibero_ui/utils/utils_ui.dart';
 
 void showDialogScheduled(BuildContext context, Map<String, String> mapData) {
   showDialog(
@@ -40,7 +39,7 @@ void showDialogScheduled(BuildContext context, Map<String, String> mapData) {
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsets.only(left: 16, right: 16, top: 16),
+                      const EdgeInsets.only(left: 16, right: 16, top: 16),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -96,7 +95,7 @@ void showDialogScheduled(BuildContext context, Map<String, String> mapData) {
                                     ),
                                     child: Column(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                      MainAxisAlignment.center,
                                       children: [
                                         Text('Clave', style: TextsUI.sub3),
                                         Text(mapData['clave']!,
@@ -108,7 +107,7 @@ void showDialogScheduled(BuildContext context, Map<String, String> mapData) {
                                     alignment: Alignment.center,
                                     child: Column(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                      MainAxisAlignment.center,
                                       children: [
                                         Text('Créditos', style: TextsUI.sub3),
                                         Text(mapData['credits']!,
@@ -130,7 +129,7 @@ void showDialogScheduled(BuildContext context, Map<String, String> mapData) {
                                     alignment: Alignment.center,
                                     child: Column(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                      MainAxisAlignment.center,
                                       children: [
                                         Text('Horas', style: TextsUI.sub3),
                                         Text(mapData['hours']!,
@@ -149,7 +148,7 @@ void showDialogScheduled(BuildContext context, Map<String, String> mapData) {
                                     alignment: Alignment.center,
                                     child: Column(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                      MainAxisAlignment.center,
                                       children: [
                                         Text('Modalidad', style: TextsUI.sub3),
                                         Text(mapData['mode']!,
@@ -257,5 +256,233 @@ void showDialogScheduled(BuildContext context, Map<String, String> mapData) {
         ),
       );
     },
+  );
+}
+
+void warningModal(
+    {required BuildContext context,
+      required String title,
+      required String content}) {
+  showModalBottomSheet(
+    context: context,
+    backgroundColor: Colors.white,
+    builder: (BuildContext context) {
+      return Padding(
+        padding: const EdgeInsets.fromLTRB(40, 16, 16, 50),
+        child: Wrap(
+          children: [
+            _cancelButton(
+              context: context,
+              iconDialog: StringsSVG.warningCircle,
+              backgroundColorIcon: Colors.white,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20, bottom: 15, right: 24),
+              child: Text(title, style: TextsUI.h4),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 24),
+              child: Text(
+                content,
+                style: TextsUI.body3,
+                textAlign: TextAlign.justify,
+              ),
+            ),
+          ],
+        ),
+      );
+    },
+  );
+}
+
+void successModal({required BuildContext context, required String title}) {
+  showModalBottomSheet(
+    context: context,
+    backgroundColor: Colors.white,
+    builder: (BuildContext context) {
+      return Padding(
+        padding: const EdgeInsets.fromLTRB(40, 16, 16, 50),
+        child: Wrap(
+          children: [
+            _cancelButton(
+              context: context,
+              iconDialog: StringsSVG.checkCircle,
+              backgroundColorIcon: Colors.white,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20, bottom: 15, right: 24),
+              child: Text(title, style: TextsUI.h4),
+            ),
+          ],
+        ),
+      );
+    },
+  );
+}
+
+void customModal<T>({
+  required BuildContext context,
+  required String title,
+  String? body,
+  Widget? widget,
+  Widget Function(ValueNotifier<T> dataNotifier)? widgetBuilder,
+  ValueNotifier<T>? dataNotifier,
+}) {
+  showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+    backgroundColor: Colors.white,
+    builder: (BuildContext context) {
+      return LayoutBuilder(builder: (context, constraints) {
+        final maxHeight = MediaQuery.of(context).size.height * 0.8;
+        return Padding(
+          padding: const EdgeInsets.fromLTRB(40, 16, 16, 0),
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              maxHeight: maxHeight,
+            ),
+            child: SingleChildScrollView(
+              physics: ClampingScrollPhysics(),
+              child: IntrinsicHeight(
+                child: Column(
+                  children: [
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: IconButton(
+                        icon: SvgPicture.asset(
+                          package: 'ibero_ui',
+                          StringsSVG.cancelCircle,
+                          width: 50,
+                          height: 50,
+                          colorFilter: ColorFilter.mode(
+                            UtilsUI.neutralColor[700]!,
+                            BlendMode.srcIn,
+                          ),
+                        ),
+                        onPressed: () => Navigator.of(context).pop(),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 15, right: 24),
+                      child: Column(
+                        children: [
+                          Text(
+                            title,
+                            style: TextsUI.sub1.copyWith(letterSpacing: -1.5),
+                          ),
+                          SizedBox(height: 20),
+                          if (body != null)
+                            Text(
+                              body,
+                              style: TextsUI.body2.copyWith(
+                                color: UtilsUI.neutralColor[700],
+                              ),
+                              textAlign: TextAlign.justify,
+                            ),
+                          if (widget != null) widget,
+                          if (widgetBuilder != null && dataNotifier != null)
+                            widgetBuilder(dataNotifier),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        );
+      });
+    },
+  );
+}
+
+void customModalWithoutTitle<T>({
+  required BuildContext context,
+  Widget? widget,
+  Widget Function(ValueNotifier<T> dataNotifier)? widgetBuilder,
+  ValueNotifier<T>? dataNotifier,
+}) {
+  showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+    backgroundColor: Colors.white,
+    builder: (BuildContext context) {
+      return FractionallySizedBox(
+        heightFactor: 0.7,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Column(
+              children: [
+                Align(
+                  alignment: Alignment.topRight,
+                  child: IconButton(
+                    icon: SvgPicture.asset(
+                      package: 'ibero_ui',
+                      StringsSVG.cancelCircle,
+                      width: 50,
+                      height: 50,
+                      colorFilter: ColorFilter.mode(
+                        UtilsUI.neutralColor[700]!,
+                        BlendMode.srcIn,
+                      ),
+                    ),
+                    onPressed: () => Navigator.of(context).pop(),
+                  ),
+                ),
+                if (widgetBuilder != null && dataNotifier != null)
+                  widgetBuilder(dataNotifier),
+              ],
+            ),
+          ),
+        ),
+      );
+    },
+  );
+}
+
+Widget _cancelButton(
+    {required BuildContext context,
+      required String iconDialog,
+      Color? backgroundColorIcon,
+      Color? colorIcon}) {
+  return Stack(
+    children: [
+      Align(
+        alignment: Alignment.topRight,
+        child: IconButton(
+          icon: SvgPicture.asset(
+            package: 'ibero_ui',
+            StringsSVG.cancelCircle,
+            width: 50,
+            height: 50,
+            colorFilter: ColorFilter.mode(
+              UtilsUI.neutralColor[700]!,
+              BlendMode.srcIn,
+            ),
+          ),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+      ),
+      Container(
+        decoration: BoxDecoration(
+          color: backgroundColorIcon ?? UtilsUI.neutralColor[50],
+          borderRadius: BorderRadius.circular(40),
+        ),
+        padding: const EdgeInsets.only(top: 40),
+        child: SvgPicture.asset(
+          package: 'ibero_ui',
+          iconDialog,
+          width: 64,
+          height: 64,
+          colorFilter: colorIcon != null
+              ? ColorFilter.mode(
+            UtilsUI.neutralColor[700]!,
+            BlendMode.srcIn,
+          )
+              : null,
+        ),
+      ),
+    ],
   );
 }

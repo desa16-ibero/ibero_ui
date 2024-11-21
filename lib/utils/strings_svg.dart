@@ -375,6 +375,7 @@ class StringsSVG {
   static const String minus1 = 'assets/svg/minus_1_ico.svg';
   static const String minus2 = 'assets/svg/minus_2_ico.svg';
   static const String minusCircle = 'assets/svg/minus_circle_ico.svg';
+  static const String mortarboard = 'assets/svg/mortarboard_ico.svg';
   static const String musicAdvance1 = 'assets/svg/music_advance_1_ico.svg';
   static const String musicAdvance2 = 'assets/svg/music_advance_2_ico.svg';
   static const String music = 'assets/svg/music_ico.svg';

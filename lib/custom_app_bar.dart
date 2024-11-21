@@ -48,6 +48,7 @@ class CustomAppBar extends StatelessWidget {
               ),
               onPressed: () => scaffoldKey.currentState?.openEndDrawer(),
             ),
+            SizedBox(width: 10),
           ],
         ),
       ),

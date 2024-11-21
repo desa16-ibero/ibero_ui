@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import 'utils/strings_svg.dart';
-import 'utils/utils_ui.dart';
+import 'package:ibero_ui/utils/strings_svg.dart';
+import 'package:ibero_ui/utils/texts_ui.dart';
+import 'package:ibero_ui/utils/utils_ui.dart';
 
 class HeaderListTile extends StatelessWidget {
   final String pathIco;
   final String title;
   final String subTitle;
   final Color? colorBackgroundIcon;
+  final TextStyle? textStyleTitle;
+  final TextStyle? textStyleSubtitle;
 
   const HeaderListTile(
       {super.key,
-      required this.pathIco,
-      required this.title,
-      required this.subTitle,
-      this.colorBackgroundIcon});
+        required this.pathIco,
+        required this.title,
+        required this.subTitle,
+        this.colorBackgroundIcon,
+        this.textStyleTitle,
+        this.textStyleSubtitle});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +42,7 @@ class HeaderListTile extends StatelessWidget {
               pathIco,
               package: 'ibero_ui',
               colorFilter:
-                  ColorFilter.mode(UtilsUI.neutralColor[900]!, BlendMode.srcIn),
+              ColorFilter.mode(UtilsUI.neutralColor[900]!, BlendMode.srcIn),
               height: 23,
               width: 23,
             ),
@@ -56,23 +60,14 @@ class HeaderListTile extends StatelessWidget {
                   title,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 18,
-                    height: 1.3,
-                    color: UtilsUI.neutralColor[900],
-                  ),
+                  style: textStyleTitle ??
+                      TextsUI.body1.copyWith(letterSpacing: 0),
                 ),
                 Text(
                   subTitle,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 12,
-                    height: 1.3,
-                    color: UtilsUI.neutralColor[900],
-                  ),
+                  style: textStyleSubtitle ?? TextsUI.body4,
                 ),
               ],
             ),
