@@ -9,12 +9,14 @@ class CustomDropdownButton extends StatefulWidget {
   final String label;
   final List<String> options;
   final String? titleTFF;
+  final String? initialValue;
 
   const CustomDropdownButton({
     super.key,
     required this.onChanged,
     required this.label,
     required this.options,
+    this.initialValue,
     this.titleTFF,
   });
 
@@ -31,6 +33,10 @@ class _CustomDropdownButtonState extends State<CustomDropdownButton> {
   void initState() {
     super.initState();
     title = widget.label;
+    if (widget.initialValue != null) {
+      selectedValue = widget.initialValue;
+      title = selectedValue ?? '';
+    }
   }
 
   @override
