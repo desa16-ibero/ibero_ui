@@ -63,9 +63,9 @@ class UtilsUI {
   };
 
   static MaterialColor materialColor =
-      MaterialColor(primaryColor[500]!.value, primaryColor);
+      MaterialColor(primaryColor[500]!.toARGB32(), primaryColor);
   static MaterialColor materialDarkColor =
-      MaterialColor(secondaryColor[500]!.value, secondaryColor);
+      MaterialColor(secondaryColor[500]!.toARGB32(), secondaryColor);
 
   static ButtonStyle raisedWhiteButtonStyle = ElevatedButton.styleFrom(
     foregroundColor: primaryColor[700],
@@ -87,4 +87,8 @@ class UtilsUI {
       borderRadius: BorderRadius.all(Radius.circular(48)),
     ),
   );
+
+  static Color primaryGrayDark = Color.fromRGBO(30, 30, 30, 1);
+  static const Color primaryRed = Color.fromRGBO(231, 52, 57, 1);
+
 }

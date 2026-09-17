@@ -44,13 +44,13 @@ class _HorizontalTableState extends State<HorizontalTable> {
 
   @override
   Widget build(BuildContext context) {
-    int totalRows = widget.rows.length;
-    int limit = widget.limit ?? totalRows;
-    int totalPages = (totalRows / limit).ceil();
+    final int totalRows = widget.rows.length;
+    final int limit = widget.limit ?? totalRows;
+    final int totalPages = (totalRows / limit).ceil();
 
-    int start = (limit * (_currentPage - 1)).clamp(0, totalRows);
-    int end = (start + limit).clamp(0, totalRows);
-    List<List<Widget>> currentRows = widget.rows.sublist(start, end);
+    final int start = (limit * (_currentPage - 1)).clamp(0, totalRows);
+    final int end = (start + limit).clamp(0, totalRows);
+    final List<List<Widget>> currentRows = widget.rows.sublist(start, end);
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -74,8 +74,9 @@ class _HorizontalTableState extends State<HorizontalTable> {
               defaultVerticalAlignment: TableCellVerticalAlignment.middle,
               children: [
                 TableRow(
-                  decoration:
-                      BoxDecoration(color: widget.headerBackgroundColor),
+                  decoration: BoxDecoration(
+                    color: widget.headerBackgroundColor,
+                  ),
                   children: widget.headers.map((header) {
                     return Container(
                       padding: const EdgeInsets.all(10),
@@ -89,7 +90,9 @@ class _HorizontalTableState extends State<HorizontalTable> {
                       color: widget.cellBackgroundColor,
                       border: Border(
                         bottom: BorderSide(
-                            width: 0.5, color: UtilsUI.neutralColor[100]!),
+                          width: 0.5,
+                          color: UtilsUI.neutralColor[100]!,
+                        ),
                       ),
                     ),
                     children: row.map((cellContent) {
@@ -110,11 +113,12 @@ class _HorizontalTableState extends State<HorizontalTable> {
   }
 
   Widget _buildPagination(int totalPages) {
-    List<Widget> paginationItems = [];
+    final List<Widget> paginationItems = [];
 
     if (_currentPage > 1) {
-      paginationItems
-          .add(_buildArrowButton(StringsSVG.chevronLeft, _currentPage - 1));
+      paginationItems.add(
+        _buildArrowButton(StringsSVG.chevronLeft, _currentPage - 1),
+      );
     }
 
     for (int i = 1; i <= totalPages; i++) {
@@ -134,8 +138,9 @@ class _HorizontalTableState extends State<HorizontalTable> {
     }
 
     if (_currentPage < totalPages) {
-      paginationItems
-          .add(_buildArrowButton(StringsSVG.chevronRight, _currentPage + 1));
+      paginationItems.add(
+        _buildArrowButton(StringsSVG.chevronRight, _currentPage + 1),
+      );
     }
 
     return Padding(
@@ -163,8 +168,9 @@ class _HorizontalTableState extends State<HorizontalTable> {
             color: _currentPage == pageNumber
                 ? UtilsUI.primaryColor[700]
                 : UtilsUI.neutralColor[500],
-            decoration:
-                _currentPage == pageNumber ? TextDecoration.underline : null,
+            decoration: _currentPage == pageNumber
+                ? TextDecoration.underline
+                : null,
             decorationColor: UtilsUI.primaryColor[700],
           ),
         ),
@@ -179,8 +185,10 @@ class _HorizontalTableState extends State<HorizontalTable> {
         width: 24,
         height: 24,
         package: 'ibero_ui',
-        colorFilter:
-            ColorFilter.mode(UtilsUI.neutralColor[900]!, BlendMode.srcIn),
+        colorFilter: ColorFilter.mode(
+          UtilsUI.neutralColor[900]!,
+          BlendMode.srcIn,
+        ),
       ),
       onPressed: () {
         setState(() {

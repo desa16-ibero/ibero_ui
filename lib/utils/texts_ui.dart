@@ -182,4 +182,20 @@ class TextsUI {
     letterSpacing: -0.2,
     color: UtilsUI.neutralColor[900],
   );
+
+  static final TextStyle globalsLabelSmall = TextStyle(
+    fontFamily: 'Praxis',
+    fontWeight: FontWeight.w500,
+    fontSize: 12,
+    letterSpacing: 2.5,
+    color: UtilsUI.primaryGrayDark,
+  );
+
+  static final TextStyle paragraphSmall = TextStyle(
+    fontFamily: 'Praxis',
+    fontWeight: FontWeight.w400,
+    fontSize: 16,
+    letterSpacing: -0.2,
+    color: UtilsUI.primaryGrayDark,
+  );
 }

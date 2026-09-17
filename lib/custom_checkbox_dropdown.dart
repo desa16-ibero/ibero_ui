@@ -9,11 +9,12 @@ class CustomCheckboxDropdown extends StatefulWidget {
   final String label;
   final Map<String, bool> mapOptionCB;
 
-  const CustomCheckboxDropdown(
-      {super.key,
-      required this.onChanged,
-      required this.label,
-      required this.mapOptionCB});
+  const CustomCheckboxDropdown({
+    super.key,
+    required this.onChanged,
+    required this.label,
+    required this.mapOptionCB,
+  });
 
   @override
   State<CustomCheckboxDropdown> createState() => _CustomCheckboxDropdownState();
@@ -61,14 +62,14 @@ class _CustomCheckboxDropdownState extends State<CustomCheckboxDropdown> {
                           onChanged: (bool? value) {
                             setState(() {
                               setValue(e.key, value!);
-                              String text =
+                              final String text =
                                   mapOptionCB.entries.any((e) => e.value)
-                                      ? mapOptionCB.entries
-                                          .toList()
-                                          .where((e) => e.value)
-                                          .map((e) => e.key)
-                                          .join(', ')
-                                      : widget.label;
+                                  ? mapOptionCB.entries
+                                        .toList()
+                                        .where((e) => e.value)
+                                        .map((e) => e.key)
+                                        .join(', ')
+                                  : widget.label;
                               changeText(text);
                               Navigator.pop(context);
                             });
@@ -79,26 +80,19 @@ class _CustomCheckboxDropdownState extends State<CustomCheckboxDropdown> {
                 );
               },
             ),
-          )
+          ),
         ];
       },
       child: Container(
         padding: const EdgeInsets.fromLTRB(15.5, 12.5, 19.5, 12.5),
         decoration: BoxDecoration(
-          border: Border.all(
-            color: UtilsUI.neutralColor[900]!,
-          ),
+          border: Border.all(color: UtilsUI.neutralColor[900]!),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(
-              child: Text(
-                title,
-                style: TextsUI.body2,
-              ),
-            ),
+            Expanded(child: Text(title, style: TextsUI.body2)),
             RotatedBox(
               quarterTurns: isOpen ? 2 : 0,
               child: GestureDetector(
@@ -130,7 +124,7 @@ class _CustomCheckboxDropdownState extends State<CustomCheckboxDropdown> {
     });
   }
 
-  clearSelection() {
+  void clearSelection() {
     setState(() {
       mapOptionCB.updateAll((key, value) => value = false);
       title = widget.label;
@@ -138,13 +132,13 @@ class _CustomCheckboxDropdownState extends State<CustomCheckboxDropdown> {
     });
   }
 
-  changeIcon(bool state) {
+  void changeIcon(bool state) {
     setState(() {
       isOpen = state;
     });
   }
 
-  changeText(String text) {
+  void changeText(String text) {
     setState(() {
       title = text;
     });

@@ -14,10 +14,13 @@ class CustomTooltip {
   }) : _overlayEntry = _createOverlayEntry(context, message, targetKey);
 
   static OverlayEntry _createOverlayEntry(
-      BuildContext context, String message, GlobalKey targetKey) {
-    RenderBox renderBox =
+    BuildContext context,
+    String message,
+    GlobalKey targetKey,
+  ) {
+    final RenderBox renderBox =
         targetKey.currentContext!.findRenderObject() as RenderBox;
-    var offset = renderBox.localToGlobal(Offset.zero);
+    final offset = renderBox.localToGlobal(Offset.zero);
 
     return OverlayEntry(
       builder: (context) => Stack(
@@ -39,7 +42,7 @@ class CustomTooltip {
                       borderRadius: BorderRadius.circular(8.0),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
+                          color: Colors.black.withValues(alpha: 0.1),
                           blurRadius: 4,
                           offset: Offset(0, 2),
                         ),

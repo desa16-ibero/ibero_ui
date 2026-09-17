@@ -50,22 +50,22 @@ class _CustomDropdownButtonState extends State<CustomDropdownButton> {
         return [
           PopupMenuItem<int>(
             value: 0,
-            child: Column(
-              children: widget.options.map((String option) {
-                return ListTile(
-                  title: Text(option),
-                  leading: Radio<String>(
-                    value: option,
-                    groupValue: selectedValue,
-                    onChanged: (String? value) {
-                      _selectOption(value!);
+            child: RadioGroup<String>(
+              groupValue: selectedValue,
+              onChanged: (String? value) {
+                _selectOption(value!);
+              },
+              child: Column(
+                children: widget.options.map((String option) {
+                  return ListTile(
+                    title: Text(option),
+                    leading: Radio<String>(value: option),
+                    onTap: () {
+                      _selectOption(option);
                     },
-                  ),
-                  onTap: () {
-                    _selectOption(option);
-                  },
-                );
-              }).toList(),
+                  );
+                }).toList(),
+              ),
             ),
           ),
         ];
@@ -78,28 +78,22 @@ class _CustomDropdownButtonState extends State<CustomDropdownButton> {
               padding: const EdgeInsets.only(bottom: 5),
               child: Text(
                 widget.titleTFF!,
-                style:
-                    TextsUI.label2.copyWith(color: UtilsUI.neutralColor[600]),
+                style: TextsUI.label2.copyWith(
+                  color: UtilsUI.neutralColor[600],
+                ),
               ),
             ),
           Container(
             padding: const EdgeInsets.fromLTRB(15.5, 12.5, 19.5, 12.5),
             decoration: BoxDecoration(
-              border: Border.all(
-                color: UtilsUI.neutralColor[900]!,
-              ),
+              border: Border.all(color: UtilsUI.neutralColor[900]!),
               color: Colors.white,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(
-                  child: Text(
-                    title,
-                    style: TextsUI.body2,
-                  ),
-                ),
+                Expanded(child: Text(title, style: TextsUI.body2)),
                 RotatedBox(
                   quarterTurns: isOpen ? 2 : 0,
                   child: GestureDetector(

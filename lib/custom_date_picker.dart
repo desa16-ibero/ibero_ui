@@ -75,8 +75,10 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
               package: 'ibero_ui',
               height: 24,
               width: 24,
-              colorFilter:
-                  ColorFilter.mode(UtilsUI.neutralColor[900]!, BlendMode.srcIn),
+              colorFilter: ColorFilter.mode(
+                UtilsUI.neutralColor[900]!,
+                BlendMode.srcIn,
+              ),
             ),
           ],
         ),
@@ -120,8 +122,8 @@ class _CustomCalendarState extends State<CustomCalendar> {
     // Calcula la diferencia en meses entre firstDate e initialDate
     final initialPageIndex =
         (widget.initialDate.year - widget.firstDate.year) * 12 +
-            widget.initialDate.month -
-            widget.firstDate.month;
+        widget.initialDate.month -
+        widget.firstDate.month;
 
     // Inicializa el PageController con el índice calculado para el mes inicial
     _pageController = PageController(initialPage: initialPageIndex);
@@ -136,12 +138,13 @@ class _CustomCalendarState extends State<CustomCalendar> {
     }
   }
 
-  // Genera una lista de opciones de mes y año para el DropdownButton
   List<DropdownMenuItem<DateTime>> _generateMonthYearItems() {
-    List<DropdownMenuItem<DateTime>> items = [];
-    for (int year = widget.firstDate.year;
-        year <= widget.lastDate.year;
-        year++) {
+    final List<DropdownMenuItem<DateTime>> items = [];
+    for (
+      int year = widget.firstDate.year;
+      year <= widget.lastDate.year;
+      year++
+    ) {
       for (int month = 1; month <= 12; month++) {
         final date = DateTime(year, month);
         if (date.isAfter(widget.firstDate) && date.isBefore(widget.lastDate)) {
@@ -199,10 +202,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
 
     return Column(
       children: [
-        Divider(
-          color: UtilsUI.neutralColor[100],
-          thickness: 1.5,
-        ),
+        Divider(color: UtilsUI.neutralColor[100], thickness: 1.5),
         // Dropdown y flechas para seleccionar mes y año
         Padding(
           padding: EdgeInsets.symmetric(vertical: 8.0),
@@ -210,7 +210,8 @@ class _CustomCalendarState extends State<CustomCalendar> {
             children: [
               Expanded(
                 child: DropdownButton<DateTime>(
-                  value: visibleMonth.isAfter(widget.firstDate) &&
+                  value:
+                      visibleMonth.isAfter(widget.firstDate) &&
                           visibleMonth.isBefore(widget.lastDate)
                       ? visibleMonth
                       : null,
@@ -244,7 +245,9 @@ class _CustomCalendarState extends State<CustomCalendar> {
                   height: 20,
                   width: 20,
                   colorFilter: ColorFilter.mode(
-                      UtilsUI.neutralColor[900]!, BlendMode.srcIn),
+                    UtilsUI.neutralColor[900]!,
+                    BlendMode.srcIn,
+                  ),
                 ),
                 onPressed: _goToPreviousMonth,
               ),
@@ -255,7 +258,9 @@ class _CustomCalendarState extends State<CustomCalendar> {
                   height: 20,
                   width: 20,
                   colorFilter: ColorFilter.mode(
-                      UtilsUI.neutralColor[900]!, BlendMode.srcIn),
+                    UtilsUI.neutralColor[900]!,
+                    BlendMode.srcIn,
+                  ),
                 ),
                 onPressed: _goToNextMonth,
               ),
@@ -266,14 +271,11 @@ class _CustomCalendarState extends State<CustomCalendar> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: weekdayLabels
-              .map((label) => Expanded(
-                    child: Center(
-                      child: Text(
-                        label,
-                        style: TextsUI.hc3,
-                      ),
-                    ),
-                  ))
+              .map(
+                (label) => Expanded(
+                  child: Center(child: Text(label, style: TextsUI.hc3)),
+                ),
+              )
               .toList(),
         ),
         SizedBox(height: 8.0),
@@ -292,15 +294,18 @@ class _CustomCalendarState extends State<CustomCalendar> {
 
             final day = index - firstDayWeekday + 2;
             final dateToShow = DateTime(date.year, date.month, day);
-            final isSelected = dateToShow.year == selectedDate.year &&
+            final isSelected =
+                dateToShow.year == selectedDate.year &&
                 dateToShow.month == selectedDate.month &&
                 dateToShow.day == selectedDate.day;
 
-            final isToday = dateToShow.year == today.year &&
+            final isToday =
+                dateToShow.year == today.year &&
                 dateToShow.month == today.month &&
                 dateToShow.day == today.day;
 
-            final isDisabled = dateToShow.isBefore(widget.firstDate) ||
+            final isDisabled =
+                dateToShow.isBefore(widget.firstDate) ||
                 dateToShow.isAfter(widget.lastDate);
 
             return GestureDetector(
@@ -320,11 +325,12 @@ class _CustomCalendarState extends State<CustomCalendar> {
                     Text(
                       '$day',
                       style: TextsUI.body2.copyWith(
-                          color: isSelected
-                              ? Colors.white
-                              : isDisabled
-                                  ? UtilsUI.neutralColor[300]
-                                  : UtilsUI.neutralColor[900]),
+                        color: isSelected
+                            ? Colors.white
+                            : isDisabled
+                            ? UtilsUI.neutralColor[300]
+                            : UtilsUI.neutralColor[900],
+                      ),
                     ),
                     if (isToday) // Muestra un punto rojo debajo del día actual
                       Container(
@@ -355,9 +361,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
         children: [
           Text(
             'ELIGE UNA FECHA',
-            style: TextsUI.label2.copyWith(
-              color: UtilsUI.neutralColor[600],
-            ),
+            style: TextsUI.label2.copyWith(color: UtilsUI.neutralColor[600]),
             textAlign: TextAlign.left,
           ),
           SizedBox(height: 25),
@@ -387,10 +391,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
               },
             ),
           ),
-          Divider(
-            color: UtilsUI.neutralColor[100],
-            thickness: 1.5,
-          ),
+          Divider(color: UtilsUI.neutralColor[100], thickness: 1.5),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [

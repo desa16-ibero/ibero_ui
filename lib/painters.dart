@@ -9,8 +9,8 @@ class DashedLineVertical extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    double dashHeight = 8;
-    double dashSpace = 3;
+    final double dashHeight = 8;
+    final double dashSpace = 3;
     double startY = 0;
 
     final paint = Paint()

@@ -8,8 +8,11 @@ class CustomStepper extends StatelessWidget {
   final int step;
   final List<String> lstPathIcons;
 
-  const CustomStepper(
-      {super.key, required this.step, required this.lstPathIcons});
+  const CustomStepper({
+    super.key,
+    required this.step,
+    required this.lstPathIcons,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +46,7 @@ class CustomStepper extends StatelessWidget {
     Color borderColor;
     Color textColor;
     bool showChevron;
-    String pathIcon = lstPathIcons[index];
+    final String pathIcon = lstPathIcons[index];
     if (step == 1) {
       backgroundColor = UtilsUI.neutralColor[50]!;
       borderColor = UtilsUI.neutralColor[700]!;
@@ -67,10 +70,7 @@ class CustomStepper extends StatelessWidget {
           decoration: BoxDecoration(
             color: backgroundColor,
             shape: BoxShape.circle,
-            border: Border.all(
-              color: borderColor,
-              width: 1,
-            ),
+            border: Border.all(color: borderColor, width: 1),
           ),
           padding: EdgeInsets.all(10),
           child: SvgPicture.asset(
@@ -84,16 +84,11 @@ class CustomStepper extends StatelessWidget {
         SizedBox(height: 15),
         Text(
           'PASO ${index + 1}',
-          style: TextsUI.label2.copyWith(
-            color: textColor,
-          ),
+          style: TextsUI.label2.copyWith(color: textColor),
         ),
         SizedBox(height: 15),
         if (showChevron)
-          SvgPicture.asset(
-            StringsSVG.chevronDown,
-            package: 'ibero_ui',
-          ),
+          SvgPicture.asset(StringsSVG.chevronDown, package: 'ibero_ui'),
       ],
     );
   }

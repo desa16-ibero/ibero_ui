@@ -8,34 +8,39 @@ class RowDays extends StatelessWidget {
 
   final Function(int weekDay) returnValue;
 
-  const RowDays(
-      {super.key, required this.currentDay, required this.returnValue});
+  const RowDays({
+    super.key,
+    required this.currentDay,
+    required this.returnValue,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: _makeHeaderWeek(),
-    );
+    return Row(children: _makeHeaderWeek());
   }
 
   List<Widget> _makeHeaderWeek() {
-    List<Widget> lstContent = [];
+    final List<Widget> lstContent = [];
 
-    DateTime firstDayOfWeek = currentDay.startOfWeek(currentDay);
-    List<DateTime> daysOfWeek = [];
+    final DateTime firstDayOfWeek = currentDay.startOfWeek(currentDay);
+    final List<DateTime> daysOfWeek = [];
     for (int i = 0; i < 6; i++) {
       daysOfWeek.add(firstDayOfWeek.add(Duration(days: i)));
     }
 
     for (DateTime dateTime in daysOfWeek) {
       if (dateTime.weekday == currentDay.weekday) {
-        lstContent.add(headerFullDay(
-            DateFormat.EEEE('es').format(dateTime).toUpperCase()));
+        lstContent.add(
+          headerFullDay(DateFormat.EEEE('es').format(dateTime).toUpperCase()),
+        );
       } else {
-        lstContent.add(headerDay(
+        lstContent.add(
+          headerDay(
             DateFormat.EEEEE('es').format(dateTime).toUpperCase(),
             daysOfWeek.last == dateTime ? true : false,
-            dateTime.weekday));
+            dateTime.weekday,
+          ),
+        );
       }
     }
 
@@ -74,9 +79,7 @@ class RowDays extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(19.2, 12.8, 19.2, 12.8),
           decoration: BoxDecoration(
             border: isFirst
-                ? Border.all(
-                    color: UtilsUI.neutralColor[300]!,
-                  )
+                ? Border.all(color: UtilsUI.neutralColor[300]!)
                 : Border(
                     bottom: BorderSide(color: UtilsUI.neutralColor[300]!),
                     left: BorderSide(color: UtilsUI.neutralColor[300]!),

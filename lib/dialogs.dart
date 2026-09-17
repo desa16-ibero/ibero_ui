@@ -379,7 +379,7 @@ void customModal<T>({
                               ),
                               textAlign: TextAlign.justify,
                             ),
-                          if (widget != null) widget,
+                          ?widget,
                           if (widgetBuilder != null && dataNotifier != null)
                             widgetBuilder(dataNotifier),
                         ],

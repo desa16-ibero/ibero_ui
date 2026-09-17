@@ -22,23 +22,24 @@ class CustomTextFormField extends StatelessWidget {
   final TextStyle? textStyleTitle;
   final bool? disableTextFormField;
 
-  const CustomTextFormField(
-      {super.key,
-        required this.label,
-        this.hint,
-        required this.textInputType,
-        this.controller,
-        this.validators,
-        this.obscureText,
-        this.changeObscureText,
-        this.send,
-        this.customMessage,
-        this.isLastTFF,
-        this.titleTFF,
-        this.enableBorders,
-        this.suffixIcon,
-        this.textStyleTitle,
-        this.disableTextFormField});
+  const CustomTextFormField({
+    super.key,
+    required this.label,
+    this.hint,
+    required this.textInputType,
+    this.controller,
+    this.validators,
+    this.obscureText,
+    this.changeObscureText,
+    this.send,
+    this.customMessage,
+    this.isLastTFF,
+    this.titleTFF,
+    this.enableBorders,
+    this.suffixIcon,
+    this.textStyleTitle,
+    this.disableTextFormField,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +51,8 @@ class CustomTextFormField extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 5),
             child: Text(
               titleTFF!,
-              style: textStyleTitle ??
+              style:
+                  textStyleTitle ??
                   TextsUI.label2.copyWith(color: UtilsUI.neutralColor[600]),
             ),
           ),
@@ -70,76 +72,86 @@ class CustomTextFormField extends StatelessWidget {
             ),
             obscureText: obscureText ?? false,
             decoration: InputDecoration(
-                floatingLabelAlignment: FloatingLabelAlignment.start,
-                floatingLabelBehavior:
-                enableBorders != null ? FloatingLabelBehavior.never : null,
-                labelText: label,
-                hintText: hint,
-                suffixIcon: changeObscureText != null
-                    ? IconButton(
-                  icon: SvgPicture.asset(
-                    obscureText! ? StringsSVG.eyeLock : StringsSVG.eye,
-                    package: 'ibero_ui',
-                    colorFilter: ColorFilter.mode(
-                      UtilsUI.neutralColor[900]!,
-                      BlendMode.srcIn,
-                    ),
-                  ),
-                  onPressed: changeObscureText,
-                )
-                    : suffixIcon != null
-                    ? UnconstrainedBox(
-                  child: SvgPicture.asset(
-                    suffixIcon!,
-                    package: 'ibero_ui',
-                    colorFilter: ColorFilter.mode(
-                      UtilsUI.neutralColor[700]!,
-                      BlendMode.srcIn,
-                    ),
-                  ),
-                )
-                    : null,
-                focusedBorder: enableBorders != null
-                    ? OutlineInputBorder(
-                  borderSide: BorderSide(
-                      color: UtilsUI.neutralColor[500]!, width: 1),
-                  borderRadius: BorderRadius.zero,
-                )
-                    : null,
-                enabledBorder: enableBorders != null
-                    ? OutlineInputBorder(
-                  borderSide: BorderSide(
-                      color: UtilsUI.neutralColor[500]!, width: 1),
-                  borderRadius: BorderRadius.zero,
-                )
-                    : null,
-                disabledBorder: enableBorders != null
-                    ? OutlineInputBorder(
-                  borderSide: BorderSide(
-                      color: UtilsUI.neutralColor[300]!, width: 1),
-                  borderRadius: BorderRadius.zero,
-                )
-                    : null),
+              floatingLabelAlignment: FloatingLabelAlignment.start,
+              floatingLabelBehavior: enableBorders != null
+                  ? FloatingLabelBehavior.never
+                  : null,
+              labelText: label,
+              hintText: hint,
+              suffixIcon: changeObscureText != null
+                  ? IconButton(
+                      icon: SvgPicture.asset(
+                        obscureText! ? StringsSVG.eyeLock : StringsSVG.eye,
+                        package: 'ibero_ui',
+                        colorFilter: ColorFilter.mode(
+                          UtilsUI.neutralColor[900]!,
+                          BlendMode.srcIn,
+                        ),
+                      ),
+                      onPressed: changeObscureText,
+                    )
+                  : suffixIcon != null
+                  ? UnconstrainedBox(
+                      child: SvgPicture.asset(
+                        suffixIcon!,
+                        package: 'ibero_ui',
+                        colorFilter: ColorFilter.mode(
+                          UtilsUI.neutralColor[700]!,
+                          BlendMode.srcIn,
+                        ),
+                      ),
+                    )
+                  : null,
+              focusedBorder: enableBorders != null
+                  ? OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: UtilsUI.neutralColor[500]!,
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.zero,
+                    )
+                  : null,
+              enabledBorder: enableBorders != null
+                  ? OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: UtilsUI.neutralColor[500]!,
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.zero,
+                    )
+                  : null,
+              disabledBorder: enableBorders != null
+                  ? OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: UtilsUI.neutralColor[300]!,
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.zero,
+                    )
+                  : null,
+            ),
             validator: (value) => _validateText(value, context, customMessage),
             onFieldSubmitted: (_) => isLastTFF! ? send!() : null,
-            textInputAction:
-            isLastTFF! ? TextInputAction.send : TextInputAction.next,
+            textInputAction: isLastTFF!
+                ? TextInputAction.send
+                : TextInputAction.next,
           ),
         ),
       ],
     );
   }
 
-  _validateText(String? value, BuildContext context, String? customMessage) {
+  String? _validateText(
+    String? value,
+    BuildContext context,
+    String? customMessage,
+  ) {
     if (validators != null) {
-      var validator = Validator(
+      final validator = Validator(
         validators: validators as List<ValueValidator>,
       );
 
-      String? message = validator.validate(
-        label: label,
-        value: value,
-      );
+      final String? message = validator.validate(label: label, value: value);
 
       String? translateMessage = '';
 
@@ -165,17 +177,22 @@ class CustomTextFormField extends StatelessWidget {
               .replaceAll('characters', 'caracteres');
         }
         if (message.contains('must be at most')) {
-          translateMessage =
-              message.replaceAll('must be at most', 'el máximo es de \$');
+          translateMessage = message.replaceAll(
+            'must be at most',
+            'el máximo es de \$',
+          );
         }
         if (message.contains('must be at least')) {
-          translateMessage =
-              message.replaceAll('must be at least', 'el mínimo es de \$');
+          translateMessage = message.replaceAll(
+            'must be at least',
+            'el mínimo es de \$',
+          );
         }
       } else {
         translateMessage = message;
       }
       return translateMessage;
     }
+    return null;
   }
 }

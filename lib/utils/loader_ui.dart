@@ -8,8 +8,11 @@ class NewtonsCradleLoader extends StatefulWidget {
   final Color? foregroundColor;
   final Color? backgroundColor;
 
-  const NewtonsCradleLoader(
-      {super.key, this.foregroundColor, this.backgroundColor});
+  const NewtonsCradleLoader({
+    super.key,
+    this.foregroundColor,
+    this.backgroundColor,
+  });
 
   @override
   State<NewtonsCradleLoader> createState() => _NewtonsCradleLoaderState();
@@ -25,8 +28,8 @@ class _NewtonsCradleLoaderState extends State<NewtonsCradleLoader>
   void initState() {
     super.initState();
 
-    double maxAngleDegrees = 110;
-    double maxAngle = math.pi * maxAngleDegrees / 180;
+    final double maxAngleDegrees = 110;
+    final double maxAngle = math.pi * maxAngleDegrees / 180;
 
     _controller = AnimationController(
       duration: Duration(milliseconds: 1200),
@@ -35,34 +38,36 @@ class _NewtonsCradleLoaderState extends State<NewtonsCradleLoader>
 
     _firstBallAnimation = TweenSequence([
       TweenSequenceItem(
-        tween: Tween<double>(begin: 0, end: maxAngle)
-            .chain(CurveTween(curve: Curves.easeOut)),
+        tween: Tween<double>(
+          begin: 0,
+          end: maxAngle,
+        ).chain(CurveTween(curve: Curves.easeOut)),
         weight: 25,
       ),
       TweenSequenceItem(
-        tween: Tween<double>(begin: maxAngle, end: 0)
-            .chain(CurveTween(curve: Curves.easeIn)),
+        tween: Tween<double>(
+          begin: maxAngle,
+          end: 0,
+        ).chain(CurveTween(curve: Curves.easeIn)),
         weight: 25,
       ),
-      TweenSequenceItem(
-        tween: ConstantTween<double>(0),
-        weight: 50,
-      ),
+      TweenSequenceItem(tween: ConstantTween<double>(0), weight: 50),
     ]).animate(_controller);
 
     _lastBallAnimation = TweenSequence([
+      TweenSequenceItem(tween: ConstantTween<double>(0), weight: 50),
       TweenSequenceItem(
-        tween: ConstantTween<double>(0),
-        weight: 50,
-      ),
-      TweenSequenceItem(
-        tween: Tween<double>(begin: 0, end: -maxAngle)
-            .chain(CurveTween(curve: Curves.easeOut)),
+        tween: Tween<double>(
+          begin: 0,
+          end: -maxAngle,
+        ).chain(CurveTween(curve: Curves.easeOut)),
         weight: 25,
       ),
       TweenSequenceItem(
-        tween: Tween<double>(begin: -maxAngle, end: 0)
-            .chain(CurveTween(curve: Curves.easeIn)),
+        tween: Tween<double>(
+          begin: -maxAngle,
+          end: 0,
+        ).chain(CurveTween(curve: Curves.easeIn)),
         weight: 25,
       ),
     ]).animate(_controller);
@@ -80,9 +85,9 @@ class _NewtonsCradleLoaderState extends State<NewtonsCradleLoader>
       child: AnimatedBuilder(
         animation: animation ?? _controller,
         builder: (context, child) {
-          double angle = animation != null ? animation.value : 0;
-          bool isMoving = angle != 0;
-          Color color = isMoving
+          final double angle = animation != null ? animation.value : 0;
+          final bool isMoving = angle != 0;
+          final Color color = isMoving
               ? widget.foregroundColor ?? UtilsUI.primaryColor[700]!
               : widget.backgroundColor ?? Colors.white;
           return Transform(
@@ -124,8 +129,12 @@ class _NewtonsCradleLoaderState extends State<NewtonsCradleLoader>
 class LoaderUI {
   static OverlayEntry? _overlayEntry;
 
-  static void show(BuildContext context,
-      {String? message, Color? foregroundColor, Color? backgroundColor}) {
+  static void show(
+    BuildContext context, {
+    String? message,
+    Color? foregroundColor,
+    Color? backgroundColor,
+  }) {
     if (_overlayEntry != null) return;
 
     final overlayState = Overlay.of(context);
@@ -135,19 +144,14 @@ class LoaderUI {
         backgroundColor: Colors.transparent,
         body: Stack(
           children: [
-            ModalBarrier(
-              dismissible: false,
-              color: UtilsUI.neutralColor[975],
-            ),
+            ModalBarrier(dismissible: false, color: UtilsUI.neutralColor[975]),
             Center(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
                     message ?? 'Espera un momento\npor favor',
-                    style: TextsUI.h5.copyWith(
-                      color: Colors.white,
-                    ),
+                    style: TextsUI.h5.copyWith(color: Colors.white),
                     textAlign: TextAlign.center,
                   ),
                   SizedBox(

@@ -8,7 +8,7 @@ class DiagonalClip extends CustomClipper<Path> {
 
   @override
   Path getClip(Size size) {
-    Path path = Path();
+    final Path path = Path();
 
     if (isLeftSide) {
       path.lineTo(0, 0);
@@ -21,7 +21,12 @@ class DiagonalClip extends CustomClipper<Path> {
       path.moveTo(0, 0);
       path.lineTo(0, size.height);
       path.lineTo(size.width - clipSize, size.height);
-      path.quadraticBezierTo(size.width, size.height - clipSize, size.width, size.height - clipSize);
+      path.quadraticBezierTo(
+        size.width,
+        size.height - clipSize,
+        size.width,
+        size.height - clipSize,
+      );
       path.lineTo(size.width, 0);
       path.close();
     }

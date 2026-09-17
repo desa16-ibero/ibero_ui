@@ -30,8 +30,11 @@ class CarouselItem {
   final String textImage;
   final String body;
 
-  CarouselItem(
-      {required this.imagePath, required this.textImage, required this.body});
+  CarouselItem({
+    required this.imagePath,
+    required this.textImage,
+    required this.body,
+  });
 }
 
 class _CustomCarouselState extends State<CustomCarousel> {
@@ -69,7 +72,7 @@ class _CustomCarouselState extends State<CustomCarousel> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: List.generate(widget.items.length, (index) {
-        bool isActive = index == _currentIndex;
+        final bool isActive = index == _currentIndex;
         return AnimatedContainer(
           duration: Duration(milliseconds: 200),
           margin: EdgeInsets.symmetric(horizontal: 4),
@@ -122,7 +125,10 @@ class _CustomCarouselState extends State<CustomCarousel> {
                         title: 'Servicios con el monedero',
                         path: StringsSVG.wallet2,
                         circleSize: 39,
-                        iconSize: 26,textStyleTitle: TextsUI.hc2.copyWith(letterSpacing: -0.81),
+                        iconSize: 26,
+                        textStyleTitle: TextsUI.hc2.copyWith(
+                          letterSpacing: -0.81,
+                        ),
                       ),
                     ),
                     ClipPath(
@@ -135,23 +141,23 @@ class _CustomCarouselState extends State<CustomCarousel> {
                             height: 94,
                             width: double.infinity,
                           ),
-                          Container(
-                            color: const Color(0x66000000),
-                            height: 94,
-                          ),
+                          Container(color: const Color(0x66000000), height: 94),
                           Positioned.fill(
                             child: Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 42, right: 23),
+                              padding: const EdgeInsets.only(
+                                left: 42,
+                                right: 23,
+                              ),
                               child: Align(
                                 alignment: Alignment.bottomLeft,
                                 child: Text(
                                   item.textImage,
                                   style: TextsUI.body4.copyWith(
-                                      fontSize: 13.02,
-                                      letterSpacing: 0,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold),
+                                    fontSize: 13.02,
+                                    letterSpacing: 0,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ),
